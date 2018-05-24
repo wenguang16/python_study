@@ -22,8 +22,12 @@ class Xitek():
 
     def __getContentAuto(self,url):
         req=urllib2.Request(url,headers=self.headers)
-        resp=urllib2.urlopen(req)
-        #time.sleep(2*random.random())
+        try:
+            resp = urllib2.urlopen(req)
+        except urllib2.HTTPError:
+            pass
+
+        time.sleep(2*random.random())
         content=resp.read()
         info=resp.info().get("Content-Encoding")
         if info==None:
