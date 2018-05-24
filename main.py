@@ -68,7 +68,7 @@ class Xitek():
             try:
                 photo_resp=urllib2.urlopen(photo_req)
             except urllib2.HTTPError:
-                print 'There was an error with the request'    
+                pass    
             pic_stream=photo_resp.read()
             time.sleep(5)
             f=open(filename,'wb')
