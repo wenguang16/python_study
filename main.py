@@ -65,7 +65,10 @@ class Xitek():
                 print "download file fail"
             '''
             photo_req=urllib2.Request(final_link,headers=self.headers)
-            photo_resp=urllib2.urlopen(photo_req)
+            try:
+                photo_resp=urllib2.urlopen(photo_req)
+            except urllib2.HTTPError:
+                print 'There was an error with the request'    
             pic_stream=photo_resp.read()
             time.sleep(5)
             f=open(filename,'wb')
